@@ -1,10 +1,10 @@
 {
   "name": "bitcoind-rpc",
-  "description": "Bitcoin Client Library to connect to Bitcoin Core via RPC",
-  "version": "0.8.1",
+  "description": "Bitcoin Client Library to connect to Bitcoin SV via RPC",
+  "version": "0.9.0",
   "author": {
-    "name": "Stephen Pair",
-    "email": "stephen@bitpay.com"
+    "name": "Long LI",
+    "email": "lilong@gmail.com"
   },
   "contributors": [
     {
@@ -22,6 +22,10 @@
     {
       "name": "Braydon Fuller",
       "email": "braydon@bitpay.com"
+    },
+    {
+      "name": "Stephen Pair",
+      "email": "stephen@bitpay.com"
     }
   ],
   "keywords": [
@@ -30,7 +34,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/bitpay/bitcoind-rpc"
+    "url": "https://github.com/baryon/bitcoind-rpc"
   },
   "license": "MIT",
   "main": "lib/index.js",
@@ -47,7 +51,8 @@
     "sinon": "^9.2.2"
   },
   "bugs": {
-    "url": "https://github.com/bitpay/bitcoind-rpc/issues"
+    "url": "https://github.com/baryon/bitcoind-rpc/issues"
   },
-  "homepage": "https://github.com/bitpay/bitcoind-rpc"
+  "homepage": "https://github.com/baryon/bitcoind-rpc",
+  "dependencies": {}
 }
