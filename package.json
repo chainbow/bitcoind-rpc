@@ -54,5 +54,7 @@
     "url": "https://github.com/baryon/bitcoind-rpc/issues"
   },
   "homepage": "https://github.com/baryon/bitcoind-rpc",
-  "dependencies": {}
+  "dependencies": {
+    "bsv": "^1.5.6"
+  }
 }
