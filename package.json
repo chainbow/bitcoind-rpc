@@ -1,6 +1,6 @@
 {
   "name": "bitcoind-rpc",
-  "description": "Bitcoin Client Library to connect to Bitcoin SV via RPC",
+  "description": "Bitcoin Client Library to connect to Bitcoin via RPC",
   "version": "0.9.0",
   "author": {
     "name": "Long LI",
@@ -37,19 +37,41 @@
     "url": "https://github.com/baryon/bitcoind-rpc"
   },
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "node_modules/.bin/mocha test -R spec",
-    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- --recursive"
+    "build": "tsc",
+    "test": "mocha -r ts-node/register 'test/**/*.ts'",
+    "coverage": "nyc --reporter=lcov npm run test",
+    "lint": "eslint 'src/**/*.ts' 'test/**/*.ts'",
+    "prepublishOnly": "npm run build"
   },
   "devDependencies": {
-    "async": "^3.2.0",
+    "@types/async": "^3.2.20",
+    "@types/chai": "^4.3.19",
+    "@types/mocha": "^8.2.3",
+    "@types/node": "^14.14.20",
+    "@types/sinon": "^17.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
     "chai": "^4.2.0",
     "coveralls": "^3.1.0",
     "dotenv": "^16.4.5",
-    "istanbul": "^0.4.5",
+    "eslint": "^7.17.0",
     "mocha": "^8.2.1",
-    "sinon": "^9.2.2"
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.2",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "async": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
   },
   "bugs": {
     "url": "https://github.com/baryon/bitcoind-rpc/issues"
