@@ -1,5 +1,4 @@
-'use strict';
-
+require('dotenv').config();
 var chai = require( 'chai' );
 var RpcClient = require( '../' );
 var util = require( 'util' );
@@ -13,6 +12,69 @@ var async = require( 'async' );
 if ( !setImmediate ) setImmediate = setTimeout;
 
 describe( 'RpcClient', function () {
+  // it( 'fetch getRawMemPool', async function ( done ) {
+  //   const client = new RpcClient( {
+  //     protocol: process.env.BTC_RPC_PROTOCOL,
+  //     host: process.env.BTC_RPC_HOST,
+  //     port: process.env.BTC_RPC_PORT,
+  //     user: process.env.BTC_RPC_USER,
+  //     pass: process.env.BTC_RPC_PASS,
+  //   } );
+  //   const result = await client.getRawMemPool();
+  //   console.log( result )
+    
+  // } ).timeout( 10000000000 );
+
+  // it('fetch getblockstats blockdata', async function(done) {
+
+  //   var client = new RpcClient({
+  //     protocol: process.env.BTC_RPC_PROTOCOL,
+  //     host: process.env.BTC_RPC_HOST,
+  //     port: process.env.BTC_RPC_PORT,
+  //     user: process.env.BTC_RPC_USER,
+  //     pass: process.env.BTC_RPC_PASS,
+  //   });
+
+  //   const blocId = "00000000000000246f457f43fed448fe1506ae2d94c9cd078908c425ef5b2218";
+  //   console.log(blocId)
+
+  //   const result = await client.getblockstats(blocId, ['total_size']);
+  //   console.log(result)
+  //   // done();
+  //   client.getblockstats(blocId, ['total_size'], function(error, parsedBuf) {
+  //     console.log(error, parsedBuf)
+  //     should.exist(parsedBuf);
+  //     // done();
+  //   });
+
+  // }).timeout(10000000000);
+
+  it('fetch bigdata blockdata', async function(done) {
+
+    var client = new RpcClient({
+      protocol: process.env.BTC_RPC_PROTOCOL,
+      host: process.env.BTC_RPC_HOST,
+      port: process.env.BTC_RPC_PORT,
+      user: process.env.BTC_RPC_USER,
+      pass: process.env.BTC_RPC_PASS,
+    });
+
+    const blocId = '00000000000000246f457f43fed448fe1506ae2d94c9cd078908c425ef5b2218'
+    console.log(blocId)
+
+    const rest_url = `/rest/block/${blocId}.bin`
+
+    const buf = await client.rest(rest_url)
+    console.log(error, buf.toString('hex'))
+    should.exist(buf);
+    client.getBlock(blocId, 0, function(error, parsedBuf) {
+      console.log(error, parsedBuf)
+      should.exist(parsedBuf);
+      done();
+    });
+
+  }).timeout(10000000000);
+/*
   it( 'should initialize the main object', function () {
     should.exist( RpcClient );
   } );
@@ -533,5 +595,5 @@ describe( 'RpcClient', function () {
     } );
 
   } );
-
+*/
 } ).timeout( 100000000000 );

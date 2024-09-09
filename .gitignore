@@ -29,3 +29,4 @@ node_modules
 
 # intelliJ project files
 .idea
+.env
